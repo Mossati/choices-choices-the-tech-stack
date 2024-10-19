@@ -1,4 +1,8 @@
 ---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { ViewTransitions } from 'astro:transitions';
+
 interface Props {
 	title: string;
 }
@@ -15,36 +19,76 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ViewTransitions />
 	</head>
+
 	<body>
-		<slot />
+		<Header/>
+
+		<main>
+			<slot/>
+		</main>
+
+		<Footer/>
 	</body>
 </html>
+
 <style is:global>
+	@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+		/* Primaire kleuren */
+		--primary-light: #6FC2B4;  /* Lichtgroen */
+		--primary: #007680;        /* Donkergroen */
+		--primary-dark: #004F59;   /* Donkerste groen/blauw */
+
+		/* Secundaire kleuren */
+		--secondary-light: #A9DEE2; /* Lichtblauw */
+		--secondary: #1CA1AE;      /* Blauwgroen */
+		--secondary-dark: #008A94; /* Dieper blauwgroen */
+
+		/* Grijs tinten */
+		--gray-light: #F0F4F8;     /* Zeer lichtgrijs voor achtergronden */
+		--gray: #B0BEC5;           /* Neutraal grijs voor tekst */
+		--gray-dark: #607D8B;      /* Donkergrijs voor contrast of subtiele accenten */
+
+		/* Witte en donkere varianten */
+		--white: #FFFFFF;          /* Voor standaard witte achtergrond en tekst */
+		--black: #212121;          /* Voor primaire zwarte tekst */
+		
+		/* Schaduw en achtergrond accenten */
+		--shadow-light: rgba(0, 118, 128, 0.1);  /* Lichte schaduw met primaire kleur */
+		--shadow-dark: rgba(0, 79, 89, 0.2);     /* Donkere schaduw met diepere kleur */
+
+		/* Accent kleuren */
+		--accent: #1DB3A1;         /* Levendige tint voor knoppen of links */
+		--accent-dark: #0E8271;    /* Donkere accentkleur voor hover-effecten */
+		
+		/* Background en border kleuren */
+		--background-light: #E8F7F6;  /* Lichte achtergrondkleur voor secties */
+		--border: #C2E3DF;            /* Neutrale border kleur passend bij het schema */
 	}
+
+
+	* {
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
+
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
+		font-family: "Open Sans", sans-serif;
+		background-image: linear-gradient(270deg, var(--white), var(--gray-light));
+		/* background-image: linear-gradient(270deg, var(--primary-dark), var(--secondary-dark)); */
+		color: var(--black);
+		font-size: 1rem;
+		font-weight: 300;
+		background-position: center;
+		background-size: cover;
+		line-height: 1.5;
 	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+
+	main {
+		padding: 1rem 5rem;
 	}
 </style>

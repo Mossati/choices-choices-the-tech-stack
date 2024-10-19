@@ -1,0 +1,41 @@
+---
+interface Props {
+	subtitle: string;
+	title: string;
+	body?: string;
+}
+
+const { subtitle, title, body } = Astro.props;
+---
+
+<section>
+    <p class="sub-title">{subtitle}</p>
+    <h2>{title}</h2>
+    <p class="description">{body}</p>
+    <slot/>
+</section>
+
+<style>
+    section {
+        margin-top: 5rem;
+    }
+
+    .sub-title {
+        background-image: linear-gradient(66.77deg, var(--primary), var(--primary-light));
+        background-clip: text;
+        color: transparent;
+        font-weight: 600;
+        display: inline-block;
+    }
+
+    h2 {
+        font-weight: 700;
+        margin-top: 0.2rem;
+    }
+
+    .description {
+        font-weight: 300;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+    }
+</style>

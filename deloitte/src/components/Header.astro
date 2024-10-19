@@ -1,13 +1,24 @@
+---
+import Button from '@components/Button.astro';
+---
+
 <header>
-    <h2>Deloitte</h2>
+    <h2>Deloitte<span>.</span></h2>
 
     <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Overview</a></li>
-        <li><a href="#">Wizard</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/overview">Overview</a></li>
+        <li><a href="/profile">Wizard</a></li>
     </ul>
 
-    <a href="">Login</a>
+    <!-- <div>
+        <div class="img-container">
+            <img src="/images/profiel.jpg" alt="profiel foto">
+        </div>
+        <a href="/profile">Naam</a>
+    </div> -->
+
+    <Button href="/login" type={1} text="login"/>
 </header>
 
 <style>
@@ -16,9 +27,7 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: 0 1rem;
-        border-radius: 1rem;
+        padding: 1rem 5rem;
         position: sticky;
     }
 
@@ -34,15 +43,37 @@
     a {
         display: inline-block;
         text-decoration: none;
-        color: white;
+        color: var(--black);
         transition: 0.2s ease-in;
     }
 
     a:hover {
-        color: limegreen;
+        color: var(--accent);
     }
 
-    h2 {
-        color: limegreen;
+    span {
+        color: var(--primary);
+    }
+
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .img-container {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 1rem;
+        border: 0.1rem solid var(--border);
+    }
+
+    img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
     }
 </style>

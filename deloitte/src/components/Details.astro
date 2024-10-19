@@ -1,0 +1,34 @@
+---
+interface Props {
+	title: string;
+	body: string;
+}
+
+const { title, body } = Astro.props;
+---
+
+<details>
+    <summary><span>vraag:</span> {title}</summary>
+    <p><span>antwoord:</span> {body}</p>
+</details>
+
+<style>
+    details {
+        border-radius: 1rem;
+        padding: 1rem;
+        border: 0.1rem solid var(--border);
+        background-image: linear-gradient(66.77deg, var(--primary), var(--primary-light));
+        margin-top: 1rem;
+        cursor: pointer;
+        color: var(--white);
+    }
+
+    p {
+        margin-top: 0.5rem;
+    }
+
+    span {
+        font-weight: 600;
+        color: var(--secondary-light);
+    }
+</style>

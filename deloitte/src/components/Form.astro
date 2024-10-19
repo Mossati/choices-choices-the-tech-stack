@@ -1,0 +1,68 @@
+---
+import Button from '@components/Button.astro';
+
+interface Props {
+    type: number;
+}
+
+const { type } = Astro.props;
+---
+
+<form>
+    <label>
+        Email
+        <input type="email" placeholder="enter your email..." required />
+    </label>
+
+    <label>
+        Wachtwoord
+        <input type="password" placeholder="enter your password..." required />
+    </label>
+
+    {type === 0 ? (
+        <p>Nog geen account? <a href="/register">Registreer</a></p>
+        <Button type={0} text="login"/>
+    ) : (
+        <p>Al een account? <a href="/login">Login</a></p>
+        <Button type={0} text="register"/>
+    )}
+
+    <p class="login-with">Andere opties</p>
+    <Button type={0} text="login with Microsoft"/>
+</form>
+
+<style>
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 1rem;
+    }
+
+    label {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input {
+        padding: 1rem;
+        border: 0.1rem solid var(--border);
+        border-radius: 1rem;
+        outline: none;
+    }
+
+    input:focus {
+        border-color: var(--primary);
+    }
+
+    a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    a:hover {
+        color: var(--accent);
+    }
+</style>

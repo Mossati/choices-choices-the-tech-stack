@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Section from '@components/Section.astro';
+import Card from '@components/Card.astro';
+import Button from '@components/Button.astro';
+import Details from '@components/Details.astro';
+---
+
+<Layout title="Deloitte | Login">
+    <Section
+    subtitle="Welkom op je profiel"
+    title="Profile">
+
+    <div class="img-container">
+        <img src="/images/profiel.jpg" alt="profiel foto">
+    </div>
+
+    <form>
+        <label>
+            Naam
+            <input type="text" placeholder="Mohammed">
+        </label>
+    
+        <label>
+            Email
+            <input type="email" placeholder="test@hva.nl">
+        </label>
+    
+        <label>
+            Wachtwoord
+            <input type="password" placeholder="Deloitte">
+        </label>
+    
+        <label>
+            Pakket
+            <input type="password" placeholder="Cash">
+        </label>
+
+        <Button text="logout"/>
+    </form>
+    </Section>
+</Layout>
+
+<style>
+    .img-container {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 1rem;
+        border: 0.1rem solid var(--border);
+    }
+
+    img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+    }
+</style>
