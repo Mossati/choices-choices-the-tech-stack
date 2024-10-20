@@ -4,6 +4,20 @@ import Section from '@components/Section.astro';
 import Card from '@components/Card.astro';
 import Button from '@components/Button.astro';
 import Details from '@components/Details.astro';
+import Input from '@components/Input.astro';
+import fetchJson from '@components/fetch-json.js';
+
+
+// Directus API URL
+const deloitteUsersUrl = 'https://fdnd-agency.directus.app/items/deloitte_users';
+const deloitteTitlesUrl = 'https://fdnd-agency.directus.app/items/deloitte_titles';
+
+let usersData = await fetchJson(deloitteUsersUrl);
+let titlesData = await fetchJson(deloitteTitlesUrl);
+
+let user = usersData?.data?.[0];
+
+let userTitle = titlesData?.data?.find((title) => title.id === user.title_id)?.title || "Geen titel";
 ---
 
 <Layout title="Deloitte | Login">
@@ -18,22 +32,27 @@ import Details from '@components/Details.astro';
     <form>
         <label>
             Naam
-            <input type="text" placeholder="Mohammed">
+            <Input type="text" placeholder={user.name}>
+        </label>
+
+        <label>
+            Titel
+            <Input type="text" placeholder={userTitle}>
         </label>
     
         <label>
             Email
-            <input type="email" placeholder="test@hva.nl">
+            <Input type="email" placeholder={user.email}>
         </label>
     
         <label>
             Wachtwoord
-            <input type="password" placeholder="Deloitte">
+            <Input type="password" placeholder={user.password}>
         </label>
     
         <label>
             Pakket
-            <input type="password" placeholder="Cash">
+            <Input type="text" placeholder="Mobility +">
         </label>
 
         <Button text="logout"/>
@@ -61,6 +80,7 @@ import Details from '@components/Details.astro';
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: start;
         gap: 1rem;
     }
 </style>

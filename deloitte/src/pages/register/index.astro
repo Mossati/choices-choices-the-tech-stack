@@ -4,17 +4,43 @@ import Section from '@components/Section.astro';
 import Card from '@components/Card.astro';
 import Button from '@components/Button.astro';
 import Details from '@components/Details.astro';
-import Form from '@components/Form.astro';
+import Input from '@components/Input.astro';
 ---
 
-<Layout title="Deloitte | Register">
+<Layout title="Deloitte | Login">
     <Section
     subtitle="Registreer met je Deloitte gegevens"
-    title="Registreer">
+    title="Register">
 
-    <Form type={1}></Form>
+    <form>
+        <label>
+            Email
+            <Input type="email" placeholder="enter your email..."/>
+        </label>
+
+        <label>
+            Wachtwoord
+            <Input type="password" placeholder="enter your password..."/>
+        </label>
+
+        <p>Al een account? <a href="/login">Login</a></p>
+
+        <Button type="submit" element={0} text="register">
+    </form>
     </Section>
 </Layout>
 
 <style>
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        gap: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--primary);
+    }
 </style>

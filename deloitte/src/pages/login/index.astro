@@ -4,7 +4,8 @@ import Section from '@components/Section.astro';
 import Card from '@components/Card.astro';
 import Button from '@components/Button.astro';
 import Details from '@components/Details.astro';
-import Form from '@components/Form.astro';
+import Input from '@components/Input.astro';
+import fetchJson from '@components/fetch-json.js';
 ---
 
 <Layout title="Deloitte | Login">
@@ -12,9 +13,35 @@ import Form from '@components/Form.astro';
     subtitle="Login met je Deloitte gegevens"
     title="Login">
 
-    <Form type={0}></Form>
+    <form>
+        <label>
+            Email
+            <Input type="email" placeholder="enter your email..."/>
+        </label>
+
+        <label>
+            Wachtwoord
+            <Input type="password" placeholder="enter your password..."/>
+        </label>
+
+        <p>Nog geen account? <a href="/register">Registreer</a></p>
+
+        <Button type="submit" element={0} text="login">
+    </form>
     </Section>
 </Layout>
 
 <style>
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        gap: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--primary);
+    }
 </style>

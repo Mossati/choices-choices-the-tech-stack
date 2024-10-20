@@ -12,8 +12,8 @@ import Details from '@components/Details.astro';
 	<h1>Deloitte<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></h1>
 	<p>Welkom bij de web app voor het mobiliteitsprogramma van Deloitte.</p>
 	<div>
-		<Button style="light" href="#" type={1} text="open wizard"/>
-		<Button style="light" href="#" type={1} text="login"/>
+		<Button style="light" href="/wizard" element={1} text="open wizard"/>
+		<Button style="light" href="/login" element={1} text="login"/>
 	</div>
 </section>
 <!-- ======================================= -->
@@ -28,7 +28,7 @@ subtitle="Ontdek je mobiliteit"
 title="Wat is het mobiliteitsprogramma?"
 body="Bij Deloitte geloven we in flexibiliteit en maatwerk. Daarom hebben we een reeks mobiliteitspakketten ontwikkeld die aansluiten bij jouw rol, voorkeuren en werklocaties. Of je nu kiest voor een leaseauto, openbaar vervoer of financiële compensatie, ons programma helpt jou op de meest efficiënte manier van A naar B."
 >
-<Button href="#" type={1} text="start nu"/>
+<Button href="/wizard" element={1} text="start nu"/>
 </Section>
 <!-- ======================================= -->
 <Section
@@ -70,7 +70,7 @@ body="Ja, jouw antwoorden worden veilig opgeslagen in ons systeem en zijn gekopp
 	}
 
 	h1 {
-		font-size: 5rem;
+		font-size: 2.5rem;
 		display: inline-block;
 	}
 
@@ -81,6 +81,14 @@ body="Ja, jouw antwoorden worden veilig opgeslagen in ons systeem en zijn gekopp
 		justify-content: center;
 		align-items: center;
 		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	div {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 		gap: 1rem;
 	}
 
@@ -105,4 +113,14 @@ body="Ja, jouw antwoorden worden veilig opgeslagen in ons systeem en zijn gekopp
 			transform: translateY(-10px);
 		}
 	}
+
+	@media only screen and (min-width: 768px) {
+        h1 {
+            font-size: 5rem;
+        }
+
+		div {
+			flex-direction: row;
+		}
+    }
 </style>

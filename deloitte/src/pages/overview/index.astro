@@ -21,19 +21,27 @@ body={`Op basis van jouw functietitel en voorkeuren hebben we een aantal mobilit
 <ul>
     <Card
     title="Cash"
-    body="A gross cash amount is paid to you every month. You are expected to manage your own transportation to and from work or client locations. You can use Deloitte-subsidized transport options if desired."/>
+    body="A gross cash amount is paid to you every month. You are expected to manage your own transportation to and from work or client locations. You can use Deloitte-subsidized transport options if desired."
+    src="/images/cash.png"
+    alt="cash"/>
 
     <Card
     title="Mobility +"
-    body="Direct financial compensation is halved. Public transport expenses are fully reimbursed for travel between 9 AM and 5 PM."/>
+    body="Direct financial compensation is halved. Public transport expenses are fully reimbursed for travel between 9 AM and 5 PM."
+    src="/images/mobility.jpg"
+    alt="bus driving"/>
 
     <Card
     title="Lease Car"
-    body="You receive a lease car provided by Deloitte. Includes access to the Deloitte Business OV Card for public transport as needed."/>
+    body="You receive a lease car provided by Deloitte. Includes access to the Deloitte Business OV Card for public transport as needed."
+    src="/images/lease.jpg"
+    alt="lease car"/>
 
     <Card
     title="Unlimited Public Transport"
-    body="Unlimited access to public transport for work-related travel."/>
+    body="Unlimited access to public transport for work-related travel."
+    src="/images/ov.jpg"
+    alt="public transport"/>
 </ul>
 </Section>
 
@@ -77,8 +85,14 @@ je stage wil gaan lopen of wilt afstuderen.`}>
     ul {
         list-style-type: "";
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: 1rem;
+    }
+
+    @media only screen and (min-width: 768px) {
+        ul {
+            flex-direction: row;
+        }
     }
 </style>
 

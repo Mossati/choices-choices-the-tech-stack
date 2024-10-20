@@ -1,5 +1,6 @@
 ---
 import Button from '@components/Button.astro';
+import Input from '@components/Input.astro';
 ---
 
 <footer>
@@ -28,9 +29,9 @@ import Button from '@components/Button.astro';
             <form>
                 <label>
                     E-mail
-                    <input type="email" placeholder="type je email...">
+                    <Input type="email" placeholder="enter your mail..."/>
                 </label>
-                <Button type={0} text="abboneer"/>
+                <Button element={0} text="abboneer"/>
             </form>
         </div>
     </section>
@@ -53,11 +54,12 @@ import Button from '@components/Button.astro';
 
     section {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: start;
         align-items: start;
         flex: 1;
         width: 100%;
+        gap: 1rem;
     }
 
     section:nth-child(2) {
@@ -96,30 +98,11 @@ import Button from '@components/Button.astro';
 
     form {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         margin-top: 1rem;
-    }
-
-    label {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    input {
-        display: block;
-        padding: 0.5rem;
-        border: 0.1rem solid var(--border);
-        border-radius: 1rem;
-        margin-left: 1rem;
-        margin-right: 1rem;
-        outline: none;
-    }
-
-    input:focus {
-        border: 0.1rem solid var(--primary);
+        gap: 1rem;
     }
 
     hr {
@@ -128,5 +111,11 @@ import Button from '@components/Button.astro';
         background-color: var(--primary-dark);
         width: 100%;
         margin: 1rem 0;
+    }
+
+    @media only screen and (min-width: 768px) {
+        section, form {
+            flex-direction: row;
+        }
     }
 </style>

@@ -1,0 +1,54 @@
+---
+interface Props {
+	text: string;
+	type: string;
+}
+
+const { text, type } = Astro.props;
+---
+
+<p class={type}>{text}</p>
+
+<style>
+    p {
+        padding: 1rem;
+        font-weight: 600;
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        width: 20rem;
+        margin-bottom: 1rem;
+    }
+
+    p::before {
+        content: "";
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+        margin-right: 1rem;
+        border-radius: 1rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .success {
+        background-color: var(--background-success);
+        color: var(--primary-success);
+    }
+
+    .success::before {
+        background-color: var(--primary-success);
+        background-image: url("/images/symbol-success.png");
+    }
+
+    .warning {
+        background-color: var(--background-warning);
+        color: var(--primary-warning);
+    }
+
+    .warning::before {
+        background-color: var(--primary-warning);
+        background-image: url("/images/symbol-error.png");
+    }
+</style>

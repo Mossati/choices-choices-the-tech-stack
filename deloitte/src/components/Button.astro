@@ -1,16 +1,17 @@
 ---
 interface Props {
 	text: string;
-    type: number;
+    type?: string;
     href?: string;
     style?: string;
+    element: number;
 }
 
-const { text, type, href, style } = Astro.props;
+const { text, type, href, style, element } = Astro.props;
 ---
 
-{type === 0 ? (
-    <button class={style}>{text}</button>
+{element === 0 ? (
+    <button type={type} class={style}>{text}</button>
 ) : (
     <a href={href} class={style}>{text}</a>
 )}

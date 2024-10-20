@@ -1,0 +1,25 @@
+---
+interface Props {
+	value?: string;
+	type: string;
+    placeholder?: string;
+    name?: string;
+}
+
+const { value, type, placeholder, name } = Astro.props;
+---
+
+<input type={type} name={name} value={value} placeholder={placeholder}>
+
+<style>
+    input {
+        padding: 0.5rem;
+        border: 0.1rem solid var(--border);
+        border-radius: 1rem;
+        outline: none;
+    }
+
+    input:focus {
+        border-color: var(--primary);
+    }
+</style>
