@@ -17,8 +17,6 @@ export async function load({ params }) {
 
   //return een object waarin person.data wordt meegegeven
   return {
-    questions: questions.data,
-    answers: answers.data,
     currentQuestion,
     currentAnswers
   }
