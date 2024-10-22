@@ -40,13 +40,6 @@ let filteredAnswers = answersData.data.filter(answer => answer.question_id === q
             <progress id="file" value={wizardPercentage} max="100">{wizardPercentage}%</progress>
         </label>
 
-        {#each filteredAnswers as answer}
-            <label>
-                <Input type="radio" name="answer" value={answer.id}></Input>
-                {answer.answer}
-            </label>
-        {/each}
-
         <label>
             <Input type="radio" name="answer"></Input>
             {answersData.data.answer}
