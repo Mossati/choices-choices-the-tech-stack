@@ -5,7 +5,7 @@ let loggedIn = true;
 ---
 
 <header>
-    <h2><a href="/">Deloitte<span>.</span></a></h2>
+    <h2><a href="/">Deloitte<span>.</span> <span>| Mobility App</span></a></h2>
 
     <ul>
         <li><a href="/">Home</a></li>
@@ -58,6 +58,12 @@ let loggedIn = true;
 
     span {
         color: var(--primary);
+    }
+
+    span:nth-child(2) {
+        font-weight: 300;
+        font-style: italic;
+        font-size: 1rem;
     }
 
     div {
