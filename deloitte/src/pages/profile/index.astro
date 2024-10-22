@@ -5,19 +5,9 @@ import Card from '@components/Card.astro';
 import Button from '@components/Button.astro';
 import Details from '@components/Details.astro';
 import Input from '@components/Input.astro';
-import fetchJson from '@components/fetch-json.js';
+import { load } from '../api/profile.js';
 
-
-// Directus API URL
-const deloitteUsersUrl = 'https://fdnd-agency.directus.app/items/deloitte_users';
-const deloitteTitlesUrl = 'https://fdnd-agency.directus.app/items/deloitte_titles';
-
-let usersData = await fetchJson(deloitteUsersUrl);
-let titlesData = await fetchJson(deloitteTitlesUrl);
-
-let user = usersData?.data?.[0];
-
-let userTitle = titlesData?.data?.find((title) => title.id === user.title_id)?.title || "Geen titel";
+const { user, userTitle } = await load();
 ---
 
 <Layout title="Deloitte | Login">

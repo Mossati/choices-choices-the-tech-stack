@@ -4,6 +4,9 @@ import Section from '@components/Section.astro';
 import Card from '@components/Card.astro';
 import Button from '@components/Button.astro';
 import Details from '@components/Details.astro';
+import { load } from '../api/overview.js';
+
+const { packages, imageSource } = await load();
 ---
 
 <Layout title="Deloitte | Overview">
@@ -19,29 +22,13 @@ title="Mobiliteitspakketten"
 body={`Op basis van jouw functietitel en voorkeuren hebben we een aantal mobiliteitspakketten geselecteerd die perfect aansluiten op jouw reisbehoeften. Bekijk de beschikbare opties hieronder en kies het pakket dat het beste bij jou past.`}>
 
 <ul>
-    <Card
-    title="Cash"
-    body="A gross cash amount is paid to you every month. You are expected to manage your own transportation to and from work or client locations. You can use Deloitte-subsidized transport options if desired."
-    src="/images/cash.png"
-    alt="cash"/>
-
-    <Card
-    title="Mobility +"
-    body="Direct financial compensation is halved. Public transport expenses are fully reimbursed for travel between 9 AM and 5 PM."
-    src="/images/mobility.jpg"
-    alt="bus driving"/>
-
-    <Card
-    title="Lease Car"
-    body="You receive a lease car provided by Deloitte. Includes access to the Deloitte Business OV Card for public transport as needed."
-    src="/images/lease.jpg"
-    alt="lease car"/>
-
-    <Card
-    title="Unlimited Public Transport"
-    body="Unlimited access to public transport for work-related travel."
-    src="/images/ov.jpg"
-    alt="public transport"/>
+    {packages.map((option) => ( 
+        <Card
+        title={option.package_name}
+        body={option.description}
+        src={`/images/${imageSource[option.id - 1]}`}
+        alt="mobiliteit optie"/>
+    ))}
 </ul>
 </Section>
 

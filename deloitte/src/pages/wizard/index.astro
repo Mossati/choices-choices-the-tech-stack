@@ -6,20 +6,12 @@ import Button from '@components/Button.astro';
 import Details from '@components/Details.astro';
 import Input from '@components/Input.astro';
 import Notification from '@components/Notification.astro';
-import fetchJson from '@components/fetch-json.js';
+import { load } from '../api/wizard.js';
 
-// Directus API URL
-const deloitteQuestionsUrl = 'https://fdnd-agency.directus.app/items/deloitte_questions';
-const deloitteAnswersUrl = 'https://fdnd-agency.directus.app/items/deloitte_answers';
-
-let questionsData = await fetchJson(deloitteQuestionsUrl);
-let answersData = await fetchJson(deloitteAnswersUrl);
+const { currentQuestion, currentAnswers } = await load({ params: { currentQuestionIndex: 0 } });
 
 let currentQuestionIndex = 0;
-let selectedAnswers = [];
-let wizardPercentage = 20;
-
-let filteredAnswers = answersData.data.filter(answer => answer.question_id === questionsData.data[currentQuestionIndex]?.id);
+let wizardPercentage = 10;
 ---
 
 <Layout title="Deloitte | Login">
@@ -32,33 +24,23 @@ let filteredAnswers = answersData.data.filter(answer => answer.question_id === q
     <Notification type="warning" text="Het process is misgegaan!"/>
 
     <form>
-
-        <p><span>Vraag:</span> {questionsData.data[currentQuestionIndex]?.question}</p>
+        <p><span>Vraag:</span> {currentQuestion.question}</p>
         
         <label>
             Progressie
             <progress id="file" value={wizardPercentage} max="100">{wizardPercentage}%</progress>
         </label>
 
-        <label>
-            <Input type="radio" name="answer"></Input>
-            {answersData.data.answer}
-        </label>
-
-        <label>
-            <Input type="radio" name="answer"></Input>
-            {answersData.data.answer}
-        </label>
-
-        <label>
-            <Input type="radio" name="answer"></Input>
-            {answersData.data.answer}
-        </label>
-
-        <label>
-            <Input type="radio" name="answer"></Input>
-            {answersData.data.answer}
-        </label>
+        <ul>
+            {currentAnswers.map((answer) => 
+            <li>
+                <label>
+                    <Input type="radio" name="answer" value={answer.answer}></Input>
+                    {answer.answer}
+                </label>
+            </li>
+            )}
+        </ul>
 
         <div>
             <Button type="button" element={0} text="vorige"></Button>
@@ -105,5 +87,9 @@ let filteredAnswers = answersData.data.filter(answer => answer.question_id === q
     span {
         color: var(--primary);
         font-weight: 600;
+    }
+
+    ul {
+        list-style-type: "";
     }
 </style>
